@@ -78,8 +78,12 @@ const menu = [
 ═══════════════════════════════════ */
 .footer {
   position: relative;
+  /* ดึง footer ขึ้นมาซ้อนทับส่วนล่างของ support-sec — มุมโปร่งใสของ arch
+     จะเผยพื้นเขียวของ support-sec แทนพื้นขาว ทำให้ต่อเนื่องไร้รอยต่อ */
+  margin-top: -100px;
+  z-index: 2;
   /* ไม่มี background-color — ส่วน transparent ของ BG image
-     จะโปร่งใส แสดง body background (ขาว) ผ่านมาได้ */
+     จะโปร่งใส แสดงพื้นหลัง (support-sec) ผ่านมาได้ */
   overflow: hidden;
   color: #e6f5e6;
 }
@@ -118,6 +122,7 @@ const menu = [
   grid-template-columns: 1.15fr 1fr 1fr;
   gap: 14px;
   align-items: start;
+  padding-top: 40px;
 }
 
 /* ─── คอลัมน์ซ้าย ─── */

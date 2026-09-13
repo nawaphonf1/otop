@@ -4,23 +4,45 @@ import TheNav from '../components/layout/TheNav.vue'
 import TheFooter from '../components/layout/TheFooter.vue'
 import ScrollTop from '../components/layout/ScrollTop.vue'
 
-import heroImg  from '../assets/common/history-hero.png'
-import phImage  from '../assets/common/ph-image.svg'
-import phVector from '../assets/common/ph-vector.svg'
+import heroImg from '../assets/common/history-hero.png'
 import startIcon from '../assets/common/tl-trees.svg'
 
-import g1 from '../assets/producers/g1.png'
-import g2 from '../assets/producers/g2.png'
-import g3 from '../assets/producers/g3.png'
-import g4 from '../assets/producers/g4.png'
-import g5 from '../assets/producers/g5.png'
-import supportBg from '../assets/producers/support-bg.png'
+import g1 from '../assets/producers/g1.svg'
+import g2 from '../assets/producers/g2.svg'
+import g3 from '../assets/producers/g3.svg'
+import g4 from '../assets/producers/g4.svg'
+import g5 from '../assets/producers/g5.svg'
+import supportBg from '../assets/producers/support-bg.jpg'
+
+// กลุ่มทอผ้า
+import weave1 from '../assets/producers/weave-1.jpg'
+import weave2 from '../assets/producers/weave-2.jpg'
+import weave3 from '../assets/producers/weave-3.jpg'
+import weave4 from '../assets/producers/weave-4.jpg'
+// กลุ่มทอเสื่อกก
+import mat1 from '../assets/producers/mat-1.jpg'
+import mat2 from '../assets/producers/mat-2.jpg'
+import mat3 from '../assets/producers/mat-3.jpg'
+// กลุ่มผ้าขาวม้าแปลงร่าง
+import transform1 from '../assets/producers/transform-1.jpg'
+import transform2 from '../assets/producers/transform-2.jpg'
+import transform3 from '../assets/producers/transform-3.jpg'
+// กลุ่มข้าวหอมสุดใจ
+import rice1 from '../assets/producers/rice-1.jpg'
+import rice2 from '../assets/producers/rice-2.jpg'
+import rice3 from '../assets/producers/rice-3.jpg'
+// กลุ่มแปรรูปมะม่วง
+import mango1 from '../assets/producers/mango-1.jpg'
+import mango2 from '../assets/producers/mango-2.jpg'
+import mango3 from '../assets/producers/mango-3.jpg'
+import mango4 from '../assets/producers/mango-4.jpg'
 
 const router = useRouter()
 
 const groups = [
   {
     no: 1, name: 'กลุ่มทอผ้า', illus: g1,
+    hero: weave1, gallery: [weave2, weave4, weave3],
     start: 'กลุ่มทอผ้าเริ่มดำเนินกิจกรรมใน พ.ศ. 2542 สืบสานภูมิปัญญาการทอผ้าของบ้านผารังหมี โดยใช้ด้ายไหมประดิษฐ์ และกี่กระตุก 4 ตัวในการผลิตผ้าขาวม้าและผ้าทอลายมัดหมี่ ที่สะท้อนเอกลักษณ์ของชุมชน',
     paras: [
       'การทอผ้าเกิดจากการสืบทอดภูมิปัญญาตามวิถีอีสาน โดยมีแนวคิดว่า ผู้หญิงควรเป็น “แม่ช่างที่ดี” จึงนำทักษะที่มีมาต่อยอดเป็นอาชีพเสริม ควบคู่กับการทอเสื่อ เพื่อสร้างรายได้และสืบสานงานฝีมือภายในชุมชน',
@@ -31,6 +53,7 @@ const groups = [
   },
   {
     no: 2, name: 'กลุ่มทอเสื่อกก', illus: g2,
+    hero: mat1, gallery: [mat2, mat3],
     start: 'กลุ่มทอเสื่อกก เริ่มดำเนินกิจกรรมในปี พ.ศ. 2524 จากการรวมกลุ่มของคนในชุมชน ก่อนพัฒนาเป็นกลุ่มอย่างจริงจังใน พ.ศ. 2542 พร้อมส่งเสริมการปลูกต้นกกในพื้นที่ เพื่อให้มีวัตถุดิบสำหรับสานต่อภูมิปัญญาท้องถิ่น',
     paras: [
       'การทอเสื่อเป็นหนึ่งในภูมิปัญญาที่ชาวบ้านผารังหมีสืบทอดกันมารุ่นต่อรุ่น โดยได้รับอิทธิพลจากวิถีอีสาน และแนวคิดที่ว่าผู้หญิงควรเป็น “แม่ช่างที่ดี” จึงนำทักษะและวัตถุดิบจากธรรมชาติมาต่อยอดเป็นอาชีพเสริม ควบคู่กับการทอผ้า',
@@ -40,6 +63,7 @@ const groups = [
   },
   {
     no: 3, name: 'กลุ่มผ้าขาวม้าแปลงร่าง', illus: g3,
+    hero: transform3, gallery: [transform1, transform2],
     start: 'กลุ่มแปรรูปด้านหัตถกรรม หรือที่เรียกกันว่า “กลุ่มผ้าขาวม้าแปลงร่าง” ก่อตั้งขึ้นใน พ.ศ. 2561 จากการรวมตัวของคนในชุมชนที่ต้องการนำผลิตภัณฑ์และภูมิปัญญาที่มีอยู่เดิมมาต่อยอดให้เกิดมูลค่าเพิ่ม',
     paras: [
       'จุดเริ่มต้นของกลุ่มมาจากสิ่งใกล้ตัวอย่าง เสื่อกก ผ้าทอ และผ้าขาวม้าซึ่งเป็นวัสดุที่มีอยู่แล้วในชุมชน แต่นำมาพัฒนาผ่านความคิดสร้างสรรค์และฝีมือให้เกิดความน่าสนใจ จึงเกิดการ “แปลงร่าง” จากผืนผ้าและงานหัตถกรรมแบบเดิมให้กลายเป็นของใช้ที่เข้ากับชีวิตประจำวันมากขึ้น',
@@ -49,6 +73,7 @@ const groups = [
   },
   {
     no: 4, name: 'กลุ่มเกษตรสมบูรณ์ ข้าวหอมสุดใจ', illus: g4,
+    hero: rice2, gallery: [rice1, rice3],
     start: 'กลุ่มข้าวหอมสุดใจ ได้เริ่มต้นดำเนินกิจกรรมเมื่อ ปี พ.ศ. 2540 จากการที่สมาชิกกลุ่มประสบปัญหาราคาผลผลิตตกต่ำ จนได้รับผลกระทบ จึงมีแนวคิดก่อตั้งกลุ่มกิจกรรมแปรรูป “ข้าวกล้องหอมมะลิ” ที่คงอยู่จนถึงปัจจุบัน',
     paras: [
       'โดยทำการผลิตข้าว ตั้งแต่เริ่มเพาะปลูก เก็บเกี่ยว แปรรูป และจำหน่าย โดยปรับเปลี่ยนพฤติกรรมด้วยการหลีกเลี่ยงการใช้สารเคมีกับผลผลิต หันมาใช้สารอินทรีย์ทดแทน ส่งผลให้ชาวนามีรายได้เพิ่มขึ้นอย่างเห็นได้ชัด จากการตัดรายจ่ายไม่จำเป็นจากการซื้อสารเคมี ที่สำคัญชาวนาบ้านผารังหมีมีสุขภาพที่ดีขึ้นไปด้วย',
@@ -58,6 +83,7 @@ const groups = [
   },
   {
     no: 5, name: 'กลุ่มแปรรูปมะม่วง', illus: g5,
+    hero: null, gallery: [mango1, mango2, mango3, mango4],
     start: 'กลุ่มแม่บ้านเกษตรกรบ้านผารังหมี นำมะม่วงจากผลผลิตในท้องถิ่น มาต่อยอดและแปรรูปเป็นผลิตภัณฑ์หลากหลายรูปแบบ เพื่อเพิ่มทางเลือกในการบริโภคและช่วยสร้างมูลค่าให้กับผลผลิตของชุมชน',
     paras: [
       'มะม่วงสดจากสวน ถูกนำมาพัฒนาเป็นผลิตภัณฑ์ของชุมชนอย่างมะม่วงกวน และน้ำมะม่วงเข้มข้น ที่มีรสชาติหวานอมเปรี้ยว หอมกลิ่นมะม่วง',
@@ -95,13 +121,17 @@ const groups = [
         <p v-reveal="{ y: 16, delay: 60 }" class="intro-body">
           บ้านผารังหมีมีการรวมกลุ่มของคนในชุมชนเพื่อสืบสานภูมิปัญญา และต่อยอดวัตถุดิบท้องถิ่นให้เกิดเป็นผลิตภัณฑ์ทั้งงานทอ งานจักสาน งานแปรรูปและผลผลิตทางการเกษตร
         </p>
-        <p v-reveal="{ y: 16, delay: 100 }" class="intro-quote">
-          “<strong class="iq-brown">รวมพลังคนในชุมชน</strong> สืบสานภูมิปัญญา<br />
-          และ<strong class="iq-brown2">สร้างสรรค์สินค้า OTOP</strong> จากบ้านผารังหมี”
-        </p>
+        <div v-reveal="{ y: 16, delay: 100 }" class="intro-quote">
+          <p>
+            “<strong class="iq-brown">รวมพลังคนในชุมชน</strong> สืบสานภูมิปัญญา<br />
+            และ<strong class="iq-brown">สร้างสรรค์สินค้า OTOP</strong> จากบ้านผารังหมี”
+          </p>
+        </div>
         <p v-reveal="{ y: 16, delay: 140 }" class="intro-tag">
-          ทำความรู้จักทั้ง 5 กลุ่มผู้ผลิต และเรื่องราวเบื้องหลังสินค้าจากชุมชน
+          <span class="it-green">ทำความรู้จักทั้ง 5 กลุ่มผู้ผลิต</span>
+          <span class="it-brown">และเรื่องราวเบื้องหลังสินค้าจากชุมชน</span>
         </p>
+        <div class="intro-divider" aria-hidden="true"></div>
       </section>
 
       <!-- ══════ 5 กลุ่มผู้ผลิต ══════ -->
@@ -130,12 +160,9 @@ const groups = [
           <p class="start-body">{{ g.start }}</p>
         </div>
 
-        <!-- ใส่ vector placeholder -->
-        <div v-reveal="{ y: 18 }" class="ph-wrap">
-          <div class="ph-box ph-tall">
-            <img class="ph-icon" :src="phVector" alt="" width="28" height="28" />
-            <span class="ph-label">ใส่ vector</span>
-          </div>
+        <!-- hero photo -->
+        <div v-if="g.hero" v-reveal="{ y: 18 }" class="grp-hero">
+          <img class="fill-img" :src="g.hero" :alt="g.name" />
         </div>
 
         <!-- paragraphs -->
@@ -143,11 +170,18 @@ const groups = [
           <p v-for="(p, i) in g.paras" :key="i" v-reveal="{ y: 14 }" class="grp-p">{{ p }}</p>
         </div>
 
-        <!-- ภาพ placeholders 2x2 -->
-        <div class="ph2col-wrap">
-          <div v-for="n in 4" :key="n" v-reveal="{ y: 16, delay: (n % 2) * 60 }" class="ph-box">
-            <img class="ph-icon" :src="phImage" alt="" width="28" height="28" />
-            <span class="ph-label">ใส่ภาพ</span>
+        <!-- ภาพประกอบ gallery -->
+        <div
+          v-reveal="{ y: 16 }"
+          class="gallery"
+          :class="`count-${g.gallery.length}`"
+        >
+          <div
+            v-for="(img, index) in g.gallery"
+            :key="index"
+            class="g-cell"
+          >
+            <img class="fill-img" :src="img" alt="" />
           </div>
         </div>
 
@@ -166,11 +200,12 @@ const groups = [
         <div class="support-overlay" aria-hidden="true"></div>
         <div class="support-inner">
           <h2 class="support-title">สนับสนุนผลิตภัณฑ์ท้องถิ่น</h2>
+          <p class="support-subtitle">ติดต่อ</p>
           <p class="support-contact">
-            <strong>Facebook</strong><br />
+            <strong class="sc-yellow">Facebook</strong><br />
             บ้านผารังหมีน่าอยู่<br />
             หรือ<br />
-            <strong>โทร 089-269-0301</strong><br />
+            <strong class="sc-yellow">โทร 089-269-0301</strong><br />
             (ผู้ใหญ่บ้านบ้านผารังหมี)
           </p>
           <p class="support-note">
@@ -189,6 +224,14 @@ const groups = [
 <style scoped>
 .pr-shell { min-height: 100dvh; background: #fff; }
 .pr-main { overflow: hidden; }
+
+/* รูปจริงเต็มกล่อง (พอดีช่อง ไม่ยืด) */
+.fill-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
 /* ─── Hero ─────────────────────────── */
 .hero-wrap {
@@ -227,17 +270,31 @@ const groups = [
   font-family: 'IBM Plex Sans Thai', var(--font); text-align: left;
 }
 .intro-body {
-  margin: 0 0 20px; font-size: 15px; line-height: 1.85; color: #414042;
+  margin: 0 0 22px; font-size: 15px; line-height: 1.85; color: #414042;
   text-align: left; text-indent: 24px;
 }
+/* การ์ดคำคม (ตาม Figma) */
 .intro-quote {
-  margin: 0 0 18px; font-size: 17px; line-height: 1.7; color: #414042; font-weight: 500;
+  margin: 0 0 22px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px 22px;
+  box-shadow: 0 6px 20px rgba(15, 77, 30, 0.08);
+}
+.intro-quote p {
+  margin: 0; font-size: 16px; line-height: 1.75; color: #9a8574; font-weight: 500;
   font-family: 'IBM Plex Sans Thai', var(--font);
 }
-.iq-brown { color: #6e391d; font-weight: 700; }
-.iq-brown2 { color: #69411f; font-weight: 700; }
+.iq-brown { color: #5c3417; font-weight: 700; }
 .intro-tag {
-  margin: 0; font-size: 15px; line-height: 1.6; color: #414042; font-weight: 500;
+  margin: 4px 0 0; display: flex; flex-direction: column; gap: 2px;
+  font-size: 18px; line-height: 1.5; font-weight: 600;
+  font-family: 'IBM Plex Sans Thai', var(--font);
+}
+.it-green { color: #308b30; }
+.it-brown { color: #6e3d17; }
+.intro-divider {
+  margin: 24px 0 0; border-top: 2px dashed #d7ddd0;
 }
 
 /* ─── Group ────────────────────────── */
@@ -278,27 +335,43 @@ const groups = [
 }
 .start-body { margin: 0; font-size: 14px; line-height: 1.75; color: #414042; text-indent: 20px; }
 
-.grp-body { margin-top: 4px; }
+/* hero photo ของกลุ่ม */
+.grp-hero {
+  margin: 16px 0 4px;
+  height: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.grp-body { margin-top: 16px; }
 .grp-p {
   margin: 0 0 16px; font-size: 15px; line-height: 1.85; color: #414042; text-indent: 24px;
 }
 
-/* placeholders */
-.ph-wrap { padding: 16px 0; }
-.ph2col-wrap {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 4px 0 16px;
+/* gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 4px 0 8px;
 }
-.ph-box {
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 6px; height: 160px; background: #e8e3d9; border: 1px solid #d6cfc7; border-radius: 16px;
+.g-cell {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #eef2ea;
 }
-.ph-box.ph-tall { height: 220px; }
-.ph-icon { opacity: 0.9; }
-.ph-label { font-size: 12px; font-weight: 600; color: #6b5e54; }
+.gallery.count-2 .g-cell,
+.gallery.count-4 .g-cell { height: 150px; }
+
+/* 3 รูป: ซ้ายซ้อน 2 + ขวาสูง 1 (ตาม Figma) */
+.gallery.count-3 { grid-auto-rows: 104px; }
+.gallery.count-3 > :nth-child(1) { grid-column: 1; grid-row: 1; }
+.gallery.count-3 > :nth-child(2) { grid-column: 1; grid-row: 2; }
+.gallery.count-3 > :nth-child(3) { grid-column: 2; grid-row: 1 / span 2; }
 
 /* quote */
 .grp-quote {
-  text-align: center; padding: 8px 10px 4px; font-family: 'IBM Plex Sans Thai', var(--font);
+  text-align: center; padding: 12px 10px 4px; font-family: 'IBM Plex Sans Thai', var(--font);
 }
 .gq-mark { display: block; font-size: 40px; line-height: 1; color: #6e3d17; font-weight: 500; }
 .grp-quote p {
@@ -314,35 +387,51 @@ const groups = [
 .support-sec {
   position: relative;
   margin-top: 8px;
-  padding: 44px 24px 50px;
-  text-align: center;
+  aspect-ratio: 393 / 829;
   overflow: hidden;
+  text-align: center;
 }
-/* ภาพทีมผู้ผลิตเป็นพื้นหลัง + overlay เขียว (ตาม Figma) */
+/* ภาพคุณยายกลุ่มทอผ้าเป็นพื้นหลัง + overlay เขียว (ตาม Figma) */
 .support-bg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 32%;
   display: block;
 }
 .support-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(48, 139, 48, 0.86) 0%, rgba(38, 120, 52, 0.9) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(102, 155, 104, 0.94) 0%, 
+    rgb(126 168 127 / 90%) 38%, 
+    rgb(117 163 120 / 66%) 72%, 
+    rgb(144 166 145 / 50%) 100%
+  );
 }
+/* rgba(94, 167, 97, 0.94) 0%, 
+    rgb(126 168 127 / 90%) 38%, 
+    rgb(117 163 120 / 66%) 72%, 
+    rgb(144 166 145 / 50%) 100% */
 .support-inner {
   position: relative;
   z-index: 1;
+  padding: 150px 24px 0;
 }
 .support-title {
-  margin: 0 0 18px; font-size: 24px; font-weight: 800; color: #fff;
+  margin: 0 0 14px; font-size: 24px; font-weight: 800; color: #fff;
   font-family: 'IBM Plex Sans Thai', var(--font);
 }
-.support-contact { margin: 0 0 18px; font-size: 15px; line-height: 1.7; color: #fff; }
-.support-contact strong { font-weight: 700; }
+.support-subtitle {
+  margin: 0 0 12px; font-size: 18px; font-weight: 700; color: #ffc611;
+  font-family: 'IBM Plex Sans Thai', var(--font);
+}
+.support-contact { margin: 0 0 18px; font-size: 15px; line-height: 1.85; color: #fff; }
+.support-contact .sc-yellow { color: #ffc611; font-weight: 700; }
 .support-note {
-  margin: 0 auto; max-width: 300px; font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.92);
+  margin: 0 auto; max-width: 300px; font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.95);
 }
 </style>
