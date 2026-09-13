@@ -19,6 +19,12 @@ import iconHome      from '../assets/history/tl-home.svg'
 import phImage       from '../assets/common/ph-image.svg'
 import phVector      from '../assets/common/ph-vector.svg'
 
+import Img0 from '../assets/history/0.png'
+import Img1 from '../assets/history/1.png'
+import Img2 from '../assets/history/2.png'
+import Img3 from '../assets/history/3.png'
+import Img4 from '../assets/history/4.png'
+
 const router = useRouter()
 
 /* ปีพ.ศ. timeline — badge สีทองวงกลม, การ์ดขาว, ไอคอนพื้นเขียวอ่อน (ตรงตาม Figma) */
@@ -187,8 +193,7 @@ const timeline = [
       <!-- ══════════════ 8. Placeholder (ใส่ vector) ══════════════ -->
       <div v-reveal="{ y: 20 }" class="ph-wrap">
         <div class="ph-box ph-tall">
-          <img class="ph-icon" :src="phVector" alt="" width="28" height="28" />
-          <span class="ph-label">ใส่ vector</span>
+          <img class="fill-img" :src="Img1" alt="" style="padding: 10px;"/>
         </div>
       </div>
 
@@ -238,20 +243,17 @@ const timeline = [
       <!-- ══════════════ 14. Placeholder (ใส่ vector) ══════════════ -->
       <div v-reveal="{ y: 20 }" class="ph-wrap">
         <div class="ph-box ph-tall">
-          <img class="ph-icon" :src="phVector" alt="" width="28" height="28" />
-          <span class="ph-label">ใส่ vector</span>
+          <img class="fill-img" :src="Img2" alt="" />
         </div>
       </div>
 
       <!-- ══════════════ 15. Placeholder ภาพ 2 คอลัมน์ (ใส่ภาพ) ══════════════ -->
       <div class="ph2col-wrap">
         <div v-reveal="{ y: 18 }" class="ph-box">
-          <img class="ph-icon" :src="phImage" alt="" width="28" height="28" />
-          <span class="ph-label">ใส่ภาพ</span>
+          <img class="fill-img" :src="Img3" alt="" />
         </div>
         <div v-reveal="{ y: 18, delay: 80 }" class="ph-box">
-          <img class="ph-icon" :src="phImage" alt="" width="28" height="28" />
-          <span class="ph-label">ใส่ภาพ</span>
+          <img class="fill-img" :src="Img4" alt="" />
         </div>
       </div>
 
@@ -299,6 +301,14 @@ const timeline = [
 }
 .hist-main {
   overflow: hidden;
+}
+
+/* รูปจริงเต็มกล่อง (พอดีช่อง ไม่ยืด) */
+.fill-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* ─── Hero ─────────────────────────── */
@@ -615,9 +625,8 @@ const timeline = [
   justify-content: center;
   gap: 6px;
   height: 160px;
-  background: #e8e3d9;
-  border: 1px solid #d6cfc7;
   border-radius: 16px;
+  overflow: hidden;
 }
 .ph-box.ph-tall { height: 220px; }
 .ph-icon { width: 28px; height: 28px; opacity: 0.9; }
