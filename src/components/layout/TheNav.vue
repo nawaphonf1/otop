@@ -9,6 +9,7 @@ const hidden = ref(false)
 const links = [
   { label: 'หน้าแรก',        to: { path: '/', hash: '#hero' } },
   { label: 'เกี่ยวกับชุมชน', to: '/history' },
+  { label: 'วิถีชีวิต',      to: '/community-story' },
   { label: 'ผลิตภัณฑ์ OTOP', to: '/products' },
   { label: 'ผู้ผลิต',        to: '/producers' },
   { label: 'ติดต่อเรา',      to: { path: '/', hash: '#contact' } },

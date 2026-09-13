@@ -8,6 +8,19 @@ import sceneImg  from '../assets/community/life-scene.png'
 import phImage   from '../assets/common/ph-image.svg'
 import phVector  from '../assets/common/ph-vector.svg'
 
+import CommunityImg1 from '../assets/community/1.jpg'
+import CommunityImg2 from '../assets/community/2.jpg'
+import CommunityImg3 from '../assets/community/3.jpg'
+import CommunityImg4 from '../assets/community/4.jpg'
+import CommunityImg5 from '../assets/community/5.jpg'
+import CommunityImg6 from '../assets/community/6.jpg'
+import CommunityImg7 from '../assets/community/7.jpg'
+import CommunityImg8 from '../assets/community/8.jpg'
+import CommunityImg9 from '../assets/community/9.jpg'
+import CommunityImg10 from '../assets/community/บ้าน.png'
+import CommunityImg11 from '../assets/community/วัด.jpg'
+import CommunityImg12 from '../assets/community/โรงเรียน.jpg'
+
 const router = useRouter()
 
 /* รากวัฒนธรรม — 3 รายการ (green pill) */
@@ -19,10 +32,15 @@ const cultureItems = [
 
 /* บวร — 3 การ์ด */
 const bvr = [
-  { title: 'บ้าน', desc: 'พื้นที่แห่งวิถีชีวิตและความสัมพันธ์' },
-  { title: 'วัด', desc: 'ศูนย์รวมจิตใจและศรัทธา' },
-  { title: 'โรงเรียน', desc: 'พื้นที่แห่งการเรียนรู้ของเยาวชน' },
+  { title: 'บ้าน', desc: 'พื้นที่แห่งวิถีชีวิตและความสัมพันธ์', img: CommunityImg10 },
+  { title: 'วัด', desc: 'ศูนย์รวมจิตใจและศรัทธา', img: CommunityImg11 },
+  { title: 'โรงเรียน', desc: 'พื้นที่แห่งการเรียนรู้ของเยาวชน', img: CommunityImg12 },
 ]
+
+/* รูปภาพชุมชน — เรียงตามเลข ใส่ในช่อง "ใส่ภาพ" (ข้ามหมวดบวร) */
+const twoColA = [CommunityImg2, CommunityImg3]                                 // 2 ช่อง (บล็อกวิถีชีวิต)
+const fourGrid = [CommunityImg4, CommunityImg5, CommunityImg6, CommunityImg7]  // 4 ช่อง (รากวัฒนธรรม)
+const twoColB = [CommunityImg8, CommunityImg9]                                 // 2 ช่อง (ก่อน closing quote)
 </script>
 
 <template>
@@ -34,8 +52,7 @@ const bvr = [
       <!-- ══════════ 1. Hero placeholder + back ══════════ -->
       <section class="hero-sec">
         <div class="hero-ph">
-          <img class="ph-icon" :src="phImage" alt="" width="26" height="26" />
-          <span class="ph-label">ใส่ภาพ</span>
+          <img class="fill-img" :src="CommunityImg1" alt="ชุมชนบ้านผารังหมี" />
         </div>
         <button class="back-btn" @click="router.back()" aria-label="กลับ">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -89,15 +106,15 @@ const bvr = [
         </p>
       </section>
 
-      <!-- ══════════ 7. Placeholder 2 คอลัมน์ ══════════ -->
+      <!-- ══════════ 7. รูป 2 คอลัมน์ (รูป 2,3) ══════════ -->
       <div class="ph2col-wrap">
-        <div v-reveal="{ y: 18 }" class="ph-box">
-          <img class="ph-icon" :src="phImage" alt="" width="28" height="28" />
-          <span class="ph-label">ใส่ภาพ</span>
-        </div>
-        <div v-reveal="{ y: 18, delay: 80 }" class="ph-box">
-          <img class="ph-icon" :src="phImage" alt="" width="28" height="28" />
-          <span class="ph-label">ใส่ภาพ</span>
+        <div
+          v-for="(img, i) in twoColA"
+          :key="i"
+          v-reveal="{ y: 18, delay: i * 80 }"
+          class="ph-box"
+        >
+          <img class="fill-img" :src="img" alt="วิถีชีวิตบ้านผารังหมี" />
         </div>
       </div>
 
@@ -119,11 +136,15 @@ const bvr = [
         </ul>
       </section>
 
-      <!-- ══════════ 9. Placeholder 4 กล่อง (2×2) ══════════ -->
+      <!-- ══════════ 9. รูป 4 กล่อง (2×2) (รูป 4,5,6,7) ══════════ -->
       <div class="ph2col-wrap ph2col-grid">
-        <div v-for="n in 4" :key="n" v-reveal="{ y: 18, delay: (n % 2) * 80 }" class="ph-box">
-          <img class="ph-icon" :src="phImage" alt="" width="28" height="28" />
-          <span class="ph-label">ใส่ภาพ</span>
+        <div
+          v-for="(img, i) in fourGrid"
+          :key="i"
+          v-reveal="{ y: 18, delay: (i % 2) * 80 }"
+          class="ph-box"
+        >
+          <img class="fill-img" :src="img" alt="รากวัฒนธรรมบ้านผารังหมี" />
         </div>
       </div>
 
@@ -143,8 +164,7 @@ const bvr = [
             class="bvr-card"
           >
             <div class="bvr-ph">
-              <img class="ph-icon" :src="phImage" alt="" width="26" height="26" />
-              <span class="ph-label">ใส่ภาพ</span>
+              <img class="fill-img" :src="b.img" alt=""  />
             </div>
             <div class="bvr-text">
               <strong class="bvr-title">{{ b.title }}</strong>
@@ -177,15 +197,15 @@ const bvr = [
         </div>
       </div>
 
-      <!-- ══════════ 13. Placeholder 2 คอลัมน์ ══════════ -->
+      <!-- ══════════ 13. รูป 2 คอลัมน์ (รูป 8,9) ══════════ -->
       <div class="ph2col-wrap">
-        <div v-reveal="{ y: 18 }" class="ph-box">
-          <img class="ph-icon" :src="phImage" alt="" width="28" height="28" />
-          <span class="ph-label">ใส่ภาพ</span>
-        </div>
-        <div v-reveal="{ y: 18, delay: 80 }" class="ph-box">
-          <img class="ph-icon" :src="phImage" alt="" width="28" height="28" />
-          <span class="ph-label">ใส่ภาพ</span>
+        <div
+          v-for="(img, i) in twoColB"
+          :key="i"
+          v-reveal="{ y: 18, delay: i * 80 }"
+          class="ph-box"
+        >
+          <img class="fill-img" :src="img" alt="ชุมชนแห่งการเรียนรู้" />
         </div>
       </div>
 
@@ -229,6 +249,7 @@ const bvr = [
   background: #e8e3d9;
   border: 1px solid #d6cfc7;
   border-radius: 16px;
+  overflow: hidden;
 }
 .back-btn {
   position: absolute;
@@ -368,8 +389,16 @@ const bvr = [
   background: #e8e3d9;
   border: 1px solid #d6cfc7;
   border-radius: 16px;
+  overflow: hidden;
 }
 .ph-box.ph-tall { height: 220px; }
+/* รูปจริงเต็มกล่อง (พอดีช่อง ไม่ยืด) */
+.fill-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 .ph-icon { opacity: 0.9; }
 .ph-label {
   font-size: 12px;
