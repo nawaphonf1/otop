@@ -20,6 +20,7 @@ import CommunityImg9 from '../assets/community/9.jpg'
 import CommunityImg10 from '../assets/community/บ้าน.png'
 import CommunityImg11 from '../assets/community/วัด.jpg'
 import CommunityImg12 from '../assets/community/โรงเรียน.jpg'
+import CommunityImg13 from '../assets/community/13.jpg'
 
 const router = useRouter()
 
@@ -192,8 +193,7 @@ const twoColB = [CommunityImg8, CommunityImg9]                                 /
       <!-- ══════════ 12. Placeholder (ใส่ vector) ══════════ -->
       <div v-reveal="{ y: 20 }" class="ph-wrap">
         <div class="ph-box ph-tall">
-          <img class="ph-icon" :src="phVector" alt="" width="28" height="28" />
-          <span class="ph-label">ใส่ vector</span>
+          <img class="fill-img" :src="CommunityImg13" alt=""  />
         </div>
       </div>
 
