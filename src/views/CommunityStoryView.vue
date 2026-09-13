@@ -55,11 +55,6 @@ const twoColB = [CommunityImg8, CommunityImg9]                                 /
         <div class="hero-ph">
           <img class="fill-img" :src="CommunityImg1" alt="ชุมชนบ้านผารังหมี" />
         </div>
-        <button class="back-btn" @click="router.back()" aria-label="กลับ">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M15 18l-6-6 6-6"/>
-          </svg>
-        </button>
       </section>
 
       <!-- ══════════ 2. Quote 1 ══════════ -->

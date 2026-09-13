@@ -1,6 +1,6 @@
 <script setup>
-import fabric from '../../assets/home/product-fabric.jpg'
-import mat from '../../assets/home/product-mat.jpg'
+import fabric from '../../assets/home/p15-1.jpg'
+import mat from '../../assets/home/p10-1.jpg'
 // ไอคอนหมวดหมู่ — export เป็น SVG ตรงจาก Figma (nodes 32:59xx)
 import iconPhakhaoma from '../../assets/products/cat-phakhaoma.svg'
 import iconMat from '../../assets/products/cat-mat.svg'
@@ -232,8 +232,9 @@ const products = [
 }
 .card-img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
+  background: #f4f2ef;
 }
 .card-img img {
   width: 100%;
