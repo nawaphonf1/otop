@@ -1,0 +1,20 @@
+{
+  "name": "otop-ban-pha-rang-mee",
+  "version": "1.0.0",
+  "private": true,
+  "description": "เว็บไซต์ประชาสัมพันธ์สินค้า OTOP นวัตวิถี บ้านผารังหมี (แปลงจาก Figma)",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.5.13",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.0.7"
+  }
+}
