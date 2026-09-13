@@ -221,8 +221,8 @@ const products = [
 .card-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding: 0 16px;
+  gap: 20px;
+  padding: 0 30px;
 }
 .card {
   background: #fff;
@@ -232,9 +232,10 @@ const products = [
 }
 .card-img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
   background: #f4f2ef;
+  padding: 30px;
 }
 .card-img img {
   width: 100%;
