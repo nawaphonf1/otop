@@ -91,11 +91,13 @@ button {
   opacity: 1;
   transform: translate(0, 0) scale(1);
 }
+/* reduce-motion (มือถือหลายเครื่องเปิดไว้): ตัดการ "เลื่อน/ซูม" ออก
+   แต่ยังคง fade-in ไว้ เพื่อให้ยังมี animation และไม่กระตุกผู้ที่ไวต่อ motion */
 @media (prefers-reduced-motion: reduce) {
   .reveal {
-    opacity: 1 !important;
     transform: none !important;
-    transition: none !important;
+    transition: opacity 0.6s ease !important;
+    transition-delay: var(--rv-delay, 0ms) !important;
   }
 }
 

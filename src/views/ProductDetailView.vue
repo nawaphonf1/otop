@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { productById, categoryLabel } from '../data/products'
 
@@ -7,6 +7,10 @@ const route = useRoute()
 const router = useRouter()
 const product = computed(() => productById(route.params.id))
 const gallery = computed(() => product.value?.gallery?.length ? product.value.gallery : [product.value?.img])
+
+// รูปที่กำลังแสดงเป็นภาพหลัก — กด thumbnail แล้วเปลี่ยน (รีเซ็ตเมื่อเปลี่ยนสินค้า)
+const active = ref(0)
+watch(() => route.params.id, () => { active.value = 0 })
 </script>
 
 <template>
@@ -23,9 +27,15 @@ const gallery = computed(() => product.value?.gallery?.length ? product.value.ga
       <!-- gallery -->
       <div class="pd-gallery">
         <div class="pd-thumbs">
-          <button v-for="(g, i) in gallery" :key="i" class="pd-thumb"><img :src="g" :alt="product.name" /></button>
+          <button
+            v-for="(g, i) in gallery"
+            :key="i"
+            class="pd-thumb"
+            :class="{ active: i === active }"
+            @click="active = i"
+          ><img :src="g" :alt="product.name" /></button>
         </div>
-        <div class="pd-main-img"><img :src="gallery[0]" :alt="product.name" /></div>
+        <div class="pd-main-img"><img :src="gallery[active]" :alt="product.name" /></div>
       </div>
 
       <!-- info -->
@@ -124,11 +134,19 @@ const gallery = computed(() => product.value?.gallery?.length ? product.value.ga
 .pd-thumb {
   width: 56px;
   height: 56px;
-  border: 1px solid #eee;
+  border: 2px solid #eee;
   border-radius: 8px;
   overflow: hidden;
   padding: 0;
   background: #f6f6f6;
+  cursor: pointer;
+  transition: border-color 0.18s ease, opacity 0.18s ease;
+  opacity: 0.72;
+}
+.pd-thumb:hover { opacity: 1; }
+.pd-thumb.active {
+  border-color: #308b30;
+  opacity: 1;
 }
 .pd-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .pd-main-img {
