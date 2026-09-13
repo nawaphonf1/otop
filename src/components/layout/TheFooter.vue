@@ -3,6 +3,11 @@ import { RouterLink } from 'vue-router'
 import logo from '../../assets/common/logo-bear.svg'
 import bgImg from '../../assets/common/footer-bg-full.png'
 
+/* overlap: ดึง footer ขึ้นไปซ้อนทับ section ก่อนหน้า (ใช้เฉพาะหน้าผู้ผลิต) */
+defineProps({
+  overlap: { type: Boolean, default: false },
+})
+
 const menu = [
   { label: 'หน้าแรก',        to: '/#hero' },
   { label: 'เกี่ยวกับชุมชน', to: '/history' },
@@ -13,7 +18,7 @@ const menu = [
 </script>
 
 <template>
-  <footer id="contact" class="footer">
+  <footer id="contact" class="footer" :class="{ 'footer--overlap': overlap }">
 
     <!-- BG image (arch + bear + ต้นไม้) — absolute ใต้ทุกอย่าง -->
     <img class="footer-bg" :src="bgImg" alt="" aria-hidden="true" />
@@ -78,14 +83,21 @@ const menu = [
 ═══════════════════════════════════ */
 .footer {
   position: relative;
-  /* ดึง footer ขึ้นมาซ้อนทับส่วนล่างของ support-sec — มุมโปร่งใสของ arch
-     จะเผยพื้นเขียวของ support-sec แทนพื้นขาว ทำให้ต่อเนื่องไร้รอยต่อ */
-  margin-top: -100px;
-  z-index: 2;
   /* ไม่มี background-color — ส่วน transparent ของ BG image
-     จะโปร่งใส แสดงพื้นหลัง (support-sec) ผ่านมาได้ */
+     จะโปร่งใส แสดง body background (ขาว) ผ่านมาได้ */
   overflow: hidden;
   color: #e6f5e6;
+}
+
+/* ── overlap variant: ใช้เฉพาะหน้าผู้ผลิต (<TheFooter :overlap="true" />) ──
+   ดึง footer ขึ้นมาซ้อนทับส่วนล่างของ support-sec — มุมโปร่งใสของ arch
+   จะเผยพื้นเขียวของ support-sec แทนพื้นขาว ทำให้ต่อเนื่องไร้รอยต่อ */
+.footer--overlap {
+  margin-top: -100px;
+  z-index: 2;
+}
+.footer--overlap .cols {
+  padding-top: 40px;
 }
 
 /* ═══════════════════════════════════
@@ -122,7 +134,6 @@ const menu = [
   grid-template-columns: 1.15fr 1fr 1fr;
   gap: 14px;
   align-items: start;
-  padding-top: 40px;
 }
 
 /* ─── คอลัมน์ซ้าย ─── */

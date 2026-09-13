@@ -216,7 +216,7 @@ const groups = [
 
     </main>
 
-    <TheFooter />
+    <TheFooter :overlap="true" />
     <ScrollTop />
   </div>
 </template>
