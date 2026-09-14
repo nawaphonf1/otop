@@ -23,10 +23,10 @@ import ScrollTop from '../components/layout/ScrollTop.vue'
       <SectionVillages />
       <SectionCaption />
       <SectionLifestyle />
-      <SectionVoice />
       <SectionProducts />
       <SectionProductMascot />
       <SectionMap />
+      <SectionVoice />
       <SectionAllProducts />
     </main>
     <TheFooter />

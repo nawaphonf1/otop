@@ -61,14 +61,15 @@ const menu = [
             <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
               <path d="M6.6 10.8a15.5 15.5 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1l-2.3 2.2z"/>
             </svg>
-            089-296-2869
+            089-296-0301
           </a>
         </div>
 
       </div>
 
-      <!-- copyright bar -->
-      <div v-reveal class="bar">
+      <!-- copyright bar (ไม่ใช้ v-reveal: เป็น element ล่างสุดของหน้าเสมอ จะตกใน
+           deadzone ของ IntersectionObserver rootMargin -8% ทำให้ค้าง opacity 0 ถาวร) -->
+      <div class="bar">
         <p>© 2026 บ้านผารังหมี จังหวัดพิษณุโลก</p>
         <p class="fine">สงวนลิขสิทธิ์ · เว็บไซต์นี้จัดทำขึ้นเพื่อประชาสัมพันธ์สินค้า OTOP ชุมชนบ้านผารังหมี</p>
       </div>
@@ -134,6 +135,7 @@ const menu = [
   grid-template-columns: 1.15fr 1fr 1fr;
   gap: 14px;
   align-items: start;
+  padding-top: 30px;
 }
 
 /* ─── คอลัมน์ซ้าย ─── */
