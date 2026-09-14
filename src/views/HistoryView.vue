@@ -588,7 +588,7 @@ const timeline = [
   line-height: 28px;
   color: #414042;
   letter-spacing: 0.16px;
-  text-align: justify;
+  text-align: center;
   text-indent: 2em;          /* ย่อหน้าแรกตาม Figma */
 }
 .story-p strong { color: #6e3d17; font-weight: 700; }

@@ -367,14 +367,4 @@ onBeforeUnmount(() => {
 .enter .body-wrap > *:nth-child(2) { transition-delay: 0.62s; }
 .enter .body-wrap > *:nth-child(3) { transition-delay: 0.74s; }
 .enter .body-wrap > *:nth-child(4) { transition-delay: 0.86s; }
-
-@media (prefers-reduced-motion: reduce) {
-  .head .eyebrow, .head .title .l1, .head .title .l2, .head .place,
-  .scene-bg, .tree-enter, .bear-enter, .body-wrap > * {
-    transition: none;
-    opacity: 1;
-    transform: none;
-  }
-  .tree-sway { animation: none; }
-}
 </style>

@@ -34,12 +34,13 @@
   margin: 0 0 18px;
   font-size: 14px;
   line-height: 1.75;
-  color: #333;
+  color: #414042;
   letter-spacing: 0.1px;
+  text-align: center;
 }
 
 .voice-text strong {
-  color: #1a1a1a;
+  color: #6E391D;
   font-weight: 700;
 }
 
