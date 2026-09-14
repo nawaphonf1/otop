@@ -1,12 +1,17 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 
-/* การ์ดตัวอย่าง (ยังไม่มีภาพ/รายละเอียดจริง) — แก้ทีหลังได้ */
+import img1 from '../../assets/home/SectionVillages/1.jpg'
+import img2 from '../../assets/home/SectionVillages/2.jpg'
+import img3 from '../../assets/home/SectionVillages/3.jpg'
+import img4 from '../../assets/home/SectionVillages/4.jpg'
+
+/* การ์ดหมู่บ้าน — รูปจริงจาก assets/home/SectionVillages */
 const cards = [
-  { title: 'หมู่บ้านผารังหมี ต.ไทรย้อย', tint: 'a', icon: 'mountain' },
-  { title: 'หมู่บ้านอารมณ์ดี', tint: 'b', icon: 'weave' },
-  { title: 'วิถีเกษตรอินทรีย์', tint: 'c', icon: 'leaf' },
-  { title: 'ผ้าทอมือภูมิปัญญา', tint: 'd', icon: 'thread' },
+  { title: 'หมู่บ้านผารังหมี ต.ไทรย้อย', tint: 'a', icon: 'mountain', img: img1 },
+  { title: 'หมู่บ้านอารมณ์ดี', tint: 'b', icon: 'weave' , img: img2},
+  { title: 'วิถีเกษตรอินทรีย์', tint: 'c', icon: 'leaf' , img: img3},
+  { title: 'ผ้าทอมือภูมิปัญญา', tint: 'd', icon: 'thread', img: img4},
 ]
 /* ทำสำเนาต่อท้าย เพื่อให้เลื่อนวนเป็นวงกลมแบบไร้รอยต่อ */
 const loopCards = computed(() => [...cards, ...cards])
@@ -152,46 +157,13 @@ onBeforeUnmount(() => {
         :aria-hidden="i >= cards.length ? 'true' : 'false'"
       >
         <div class="thumb" :class="'tint-' + c.tint">
-          <svg
-            v-if="c.icon === 'mountain'"
-            viewBox="0 0 24 24"
-            width="34"
-            height="34"
-          >
-            <path
-              fill="currentColor"
-              d="M14 6l5 8h-4l-3-5-1 1.6L14 6zM8.5 9.5L14 18H3l5.5-8.5z"
-            />
-          </svg>
-          <svg
-            v-else-if="c.icon === 'weave'"
-            viewBox="0 0 24 24"
-            width="34"
-            height="34"
-          >
-            <path
-              fill="currentColor"
-              d="M4 5h16v2H4V5zm0 12h16v2H4v-2zM6 8h2v8H6V8zm4 0h2v8h-2V8zm4 0h2v8h-2V8zm4 0h2v8h-2V8z"
-            />
-          </svg>
-          <svg
-            v-else-if="c.icon === 'leaf'"
-            viewBox="0 0 24 24"
-            width="34"
-            height="34"
-          >
-            <path
-              fill="currentColor"
-              d="M5 19c0-7 5-13 14-13 0 9-6 14-13 14l-1-1c1-4 4-7 8-8-5 1-7 4-8 8z"
-            />
-          </svg>
-          <svg v-else viewBox="0 0 24 24" width="34" height="34">
-            <path
-              fill="currentColor"
-              d="M4 4h16v3H4V4zm2 5h3l3 11H9L6 9zm7 0h3l-3 11h-3l3-11z"
-            />
-          </svg>
-          <span class="ph">ตัวอย่างรูปภาพ</span>
+          <img
+            class="thumb-img"
+            :src="c.img"
+            :alt="c.title"
+            loading="lazy"
+            draggable="false"
+          />
         </div>
         <p class="caption">{{ c.title }}</p>
       </a>
@@ -248,12 +220,15 @@ onBeforeUnmount(() => {
   overflow: hidden;
   -webkit-user-drag: none;
 }
-.thumb .ph {
+/* รูปจริงเต็มกรอบ 4/3 (พอดีช่อง ไม่ยืด) */
+.thumb-img {
   position: absolute;
-  bottom: 10px;
-  font-size: 11px;
-  letter-spacing: 0.4px;
-  opacity: 0.85;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  -webkit-user-drag: none;
 }
 .tint-a {
   background: linear-gradient(150deg, #4c9a4f, #1c6b2c);
