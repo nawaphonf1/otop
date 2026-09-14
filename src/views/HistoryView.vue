@@ -155,7 +155,7 @@ const timeline = [
 
       <!-- sub-heading ท้าย timeline (บนพื้นขาว) -->
       <h2 v-reveal="{ y: 18 }" class="tl-subheading">
-        จากชุมชนเล็ก ๆ สู่ <span class="tl-sh-brown">"บ้านผารังหมี"</span>
+        จากชุมชนเล็ก ๆ สู่<br /><span class="tl-sh-brown">"บ้านผารังหมี"</span>
       </h2>
 
       <!-- ══════════════ 4. Quote 1 ══════════════ -->
@@ -268,7 +268,7 @@ const timeline = [
       <!-- ══════════════ 17. เรื่องราว 3.14 ══════════════ -->
       <section class="story-sec alt">
         <p v-reveal="{ y: 16 }" class="story-p">
-          บ้านผารังหมีเป็นชุมชนที่มีการพัฒนาตนเองมาอย่างต่อเนื่อง มีการจัดกลุ่มที่อยู่อาศัยเป็นกลุ่มหรือ <strong>"คุ้ม"</strong> โดยมีหัวหน้าคุ้มคอยดูแลความเป็นอยู่ของคนในพื้นที่ และบ้านเรือนส่วนใหญ่ตั้งอยู่รวมกันเป็นกลุ่ม มีถนนสายหลักเพื่อแบ่งแนวเขตพื้นที่ครัวเรือน
+          บ้านผารังหมีเป็นชุมชนที่มีการพัฒนาตนเองมาอย่างต่อเนื่อง มีการจัดการพื้นที่อยู่อาศัยเป็นกลุ่มหรือ <strong>"คุ้ม"</strong> โดยมีหัวหน้าคุ้มคอยดูแลความเป็นอยู่ของคนในพื้นที่ และบ้านเรือนส่วนใหญ่ตั้งอยู่รวมกันเป็นกลุ่ม มีถนนสายหลัก และการจัดทำรั้วกินได้ เพื่อแบ่งแนวเขตพื้นที่ครัวเรือน
         </p>
         <p v-reveal="{ y: 16, delay: 80 }" class="story-p">
           นอกจากนี้ คนในชุมชนยังให้ความสำคัญกับการศึกษา ศาสนา และการรวมกลุ่มเพื่อทำกิจกรรมต่างๆ โดยเปิดโอกาสให้คนในหมู่บ้านได้ร่วมแสดงความคิดเห็น และร่วมมือกันทำสิ่งที่เป็นประโยชน์ต่อส่วนรวมอยู่เสมอ
@@ -584,10 +584,12 @@ const timeline = [
 }
 .story-p {
   margin: 0 0 14px;
-  font-size: 14px;
-  line-height: 1.8;
+  font-size: 15px;
+  line-height: 28px;
   color: #414042;
   letter-spacing: 0.16px;
+  text-align: justify;
+  text-indent: 2em;          /* ย่อหน้าแรกตาม Figma */
 }
 .story-p strong { color: #6e3d17; font-weight: 700; }
 .story-p:last-child { margin-bottom: 0; }
@@ -751,10 +753,11 @@ const timeline = [
 }
 .closing-text {
   margin: 0;
-  font-size: 14px;
-  line-height: 1.85;
+  font-size: 15px;
+  line-height: 25px;
   color: #414042;
-  text-align: left;
+  text-align: center;
+  letter-spacing: 0.48px;
 }
 .closing-text strong {
   font-weight: 700;
