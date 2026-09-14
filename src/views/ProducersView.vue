@@ -298,7 +298,7 @@ const groups = [
 }
 
 /* ─── Group ────────────────────────── */
-.grp { padding: 26px 24px 0; }
+.grp { padding: 26px 24px 0; text-align: center; }
 .grp-head {
   display: flex; align-items: center; gap: 14px; position: relative;
 }

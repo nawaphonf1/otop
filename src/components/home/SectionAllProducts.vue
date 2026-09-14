@@ -53,7 +53,7 @@ function goToProduct(id) {
             <span class="prod-name">{{ p.name }}</span>
             <span class="prod-price">{{ p.price }}</span>
           </div>
-          <p class="prod-desc">{{ p.desc }}</p>
+          <p class="prod-desc" v-html="p.desc"></p>
           <div class="card-footer">
             <span class="prod-group">
               <span class="star">★</span> {{ p.group }}

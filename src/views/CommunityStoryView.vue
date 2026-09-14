@@ -82,7 +82,7 @@ const twoColB = [CommunityImg8, CommunityImg9]                                 /
       <section v-reveal="{ y: 18 }" class="introcard-sec">
         <div class="introcard">
           <p class="introcard-text">
-            “ บ้านผารังหมี<strong>มีเสน่ห์จากการผสมผสานระหว่างธรรมชาติและวิถีชีวิต</strong> โดยมีภูเขาหินปูน ทุ่งนา และพื้นที่เกษตรกรรมเป็นฉากหลังของชุมชน ผู้คนมีวิถีชีวิตเรียบง่าย เป็นมิตร ”
+            “ บ้านผารังหมี<strong>มีเสน่ห์จากการผสมผสานระหว่างธรรมชาติและวิถีชีวิต</strong> โดยมีภูเขาหินปูนและพื้นที่เกษตรกรรมเป็นฉากหลังของชุมชน ผู้คนมีวิถีชีวิตเรียบง่ายเป็นมิตร ”
           </p>
         </div>
       </section>
@@ -409,6 +409,7 @@ const twoColB = [CommunityImg8, CommunityImg9]                                 /
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   gap: 11px;
 }
 .pill {
@@ -417,6 +418,10 @@ const twoColB = [CommunityImg8, CommunityImg9]                                 /
   background: #308b30;
   color: #fff;
   font-size: 15px;
+  /* กึ่งกลางทั้งแนวนอน+แนวตั้ง (ครอบคลุมข้อความหลายบรรทัด และ override .pill global) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 9px 16px;
   border-radius: 15px;

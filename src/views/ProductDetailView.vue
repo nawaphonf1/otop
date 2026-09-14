@@ -44,12 +44,12 @@ watch(() => route.params.id, () => { active.value = 0 })
         <h1 class="pd-name">{{ product.name }}</h1>
         <span class="pd-price">{{ product.price }}฿</span>
       </div>
-      <p class="pd-shortdesc">{{ product.desc }}</p>
+      <p class="pd-shortdesc" v-html="product.desc"></p>
 
       <!-- คำอธิบาย -->
       <section class="pd-sec">
         <h2 class="pd-sec-title">คำอธิบาย</h2>
-        <p class="pd-sec-body">{{ product.longDesc || product.desc }}</p>
+        <p class="pd-sec-body" v-html="product.longDesc || product.desc"></p>
       </section>
 
       <!-- รายละเอียด -->
