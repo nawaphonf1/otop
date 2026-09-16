@@ -22,7 +22,9 @@ defineProps({ product: { type: Object, required: true } })
 
 <style scoped>
 .pcard {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   color: inherit;
 }
 .pcard-img {
@@ -46,11 +48,16 @@ defineProps({ product: { type: Object, required: true } })
   margin-top: 10px;
 }
 .pcard-name {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   font-family: 'LINE Seed Sans TH', var(--font);
   font-weight: 700;
   font-size: 15px;
   color: #4c2702;
   line-height: 1.25;
+  height: calc(1.25em * 2);
 }
 .pcard-price {
   flex-shrink: 0;
@@ -59,16 +66,21 @@ defineProps({ product: { type: Object, required: true } })
   color: #603913;
 }
 .pcard-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   margin: 6px 0 8px;
   font-size: 12px;
   line-height: 1.35;
   color: #7a7a7a;
-  min-height: 32px;
+  height: calc(1.35em * 2);
 }
 .pcard-cat {
   display: flex;
   align-items: center;
   gap: 4px;
+  margin-top: auto;
   font-size: 11px;
   color: #308b30;
 }
