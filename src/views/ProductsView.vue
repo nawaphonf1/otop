@@ -178,9 +178,24 @@ const list = computed(() => (slug.value ? productsByCat(slug.value) : products))
 /* ── grid สินค้า ── */
 .pgrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px 11px;
   padding: 16px 20px 24px;
+}
+
+/* จอแคบมาก: ให้ col ซ้ายย่อขนาดตามลงไปด้วย (เดิม col ขวาเล็กกว่า col ซ้ายเพราะ minmax(auto,1fr) ยึด min-content ของการ์ด) */
+@media (max-width: 310px) {
+  .pgrid {
+    gap: 16px 8px;
+    padding: 16px 12px 24px;
+  }
+}
+
+/* จอเล็กกว่า 250px: เหลือ 1 คอลัมน์ */
+@media (max-width: 250px) {
+  .pgrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ── CTA กลุ่มผู้ผลิต ── */
