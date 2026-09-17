@@ -36,6 +36,10 @@ const routes = [
     meta: { scrollTop: true },
   },
   {
+    path: '/admin',
+    redirect: '/admin/products',
+  },
+  {
     path: '/admin/products',
     component: () => import('../views/admin/AdminProductsView.vue'),
     meta: { scrollTop: true },
