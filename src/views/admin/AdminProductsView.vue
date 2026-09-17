@@ -194,6 +194,11 @@ async function removeProduct(p) {
 </script>
 
 <template>
+  <!-- root เดียวคงที่ตลอด (ห้ามสลับ root element เป็น v-if/v-else ตรง ๆ) เพราะ App.vue ครอบ
+       route ด้วย <Transition> อยู่ — ถ้า root ของ component เปลี่ยนตัวระหว่างล็อกอิน/ปลดล็อก
+       transform ของ transition จะค้างอยู่บน element ใหม่ ทำให้ .overlay ที่เป็น position:fixed
+       เพี้ยนไปยึดตำแหน่งตาม ancestor ที่ติด transform แทนที่จะยึดตาม viewport (modal เลยดูล้น) -->
+  <div class="admin-root">
   <!-- ═══ หน้าล็อกอิน — เข้ามาต้องกรอกรหัสก่อนถึงจะเห็นเนื้อหา ═══ -->
   <div v-if="!unlocked" class="login-gate">
     <form class="login-box" @submit.prevent="submitLogin">
@@ -312,6 +317,7 @@ async function removeProduct(p) {
         </div>
       </form>
     </div>
+  </div>
   </div>
 </template>
 
