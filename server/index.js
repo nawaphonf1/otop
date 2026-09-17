@@ -58,20 +58,25 @@ app.post('/api/products', (req, res) => {
   res.status(201).json(product)
 })
 
-app.put('/api/products/:id', (req, res) => {
+// ใช้ query string ?id=xxx (แทน /api/products/:id) ให้ตรงกับ api/products/index.js ตอน deploy จริง
+app.put('/api/products', (req, res) => {
   if (!checkAdminKey(req, res)) return
+  const { id } = req.query
+  if (!id) return res.status(400).json({ error: 'ต้องระบุ ?id=' })
   const data = readData()
-  const idx = data.products.findIndex((p) => p.id === req.params.id)
+  const idx = data.products.findIndex((p) => p.id === id)
   if (idx === -1) return res.status(404).json({ error: 'ไม่พบสินค้านี้' })
-  data.products[idx] = { ...data.products[idx], ...req.body, id: req.params.id }
+  data.products[idx] = { ...data.products[idx], ...req.body, id }
   writeData(data)
   res.json(data.products[idx])
 })
 
-app.delete('/api/products/:id', (req, res) => {
+app.delete('/api/products', (req, res) => {
   if (!checkAdminKey(req, res)) return
+  const { id } = req.query
+  if (!id) return res.status(400).json({ error: 'ต้องระบุ ?id=' })
   const data = readData()
-  const idx = data.products.findIndex((p) => p.id === req.params.id)
+  const idx = data.products.findIndex((p) => p.id === id)
   if (idx === -1) return res.status(404).json({ error: 'ไม่พบสินค้านี้' })
   data.products.splice(idx, 1)
   writeData(data)

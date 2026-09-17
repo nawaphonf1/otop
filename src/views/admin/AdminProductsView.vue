@@ -133,7 +133,7 @@ async function save() {
       if (!res.ok) throw new Error(json.error || 'เพิ่มสินค้าไม่สำเร็จ')
       store.products.push(json)
     } else {
-      const res = await fetch(`/api/products/${editingId.value}`, { method: 'PUT', headers: authHeaders(), body })
+      const res = await fetch(`/api/products?id=${encodeURIComponent(editingId.value)}`, { method: 'PUT', headers: authHeaders(), body })
       const json = await res.json().catch(() => ({}))
       if (!res.ok) throw new Error(json.error || 'บันทึกไม่สำเร็จ')
       const idx = store.products.findIndex((p) => p.id === editingId.value)
@@ -150,7 +150,7 @@ async function save() {
 
 async function removeProduct(p) {
   if (!confirm(`ลบสินค้า "${p.name}" ?`)) return
-  const res = await fetch(`/api/products/${p.id}`, { method: 'DELETE', headers: authHeaders() })
+  const res = await fetch(`/api/products?id=${encodeURIComponent(p.id)}`, { method: 'DELETE', headers: authHeaders() })
   if (!res.ok && res.status !== 204) {
     const json = await res.json().catch(() => ({}))
     alert(json.error || 'ลบไม่สำเร็จ')
