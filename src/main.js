@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router/index.js'
+import { loadProducts } from './data/products.js'
 import './style.css'
 
 const app = createApp(App)
@@ -31,4 +32,4 @@ app.directive('reveal', {
 })
 
 app.use(router)
-app.mount('#app')
+loadProducts().finally(() => app.mount('#app'))

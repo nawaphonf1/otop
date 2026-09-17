@@ -35,6 +35,11 @@ const routes = [
     component: () => import('../views/ProducersView.vue'),
     meta: { scrollTop: true },
   },
+  {
+    path: '/admin/products',
+    component: () => import('../views/admin/AdminProductsView.vue'),
+    meta: { scrollTop: true },
+  },
 ]
 
 const router = createRouter({

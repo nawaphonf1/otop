@@ -5,11 +5,11 @@ import TheNav from '../components/layout/TheNav.vue'
 import TheFooter from '../components/layout/TheFooter.vue'
 import ScrollTop from '../components/layout/ScrollTop.vue'
 import ProductCard from '../components/product/ProductCard.vue'
-import { products, categories, productsByCat, categoryLabel, heroCollage } from '../data/products'
+import { state, productsByCat, categoryLabel } from '../data/products'
 
 const route = useRoute()
 const slug = computed(() => route.params.slug || '')
-const list = computed(() => (slug.value ? productsByCat(slug.value) : products))
+const list = computed(() => (slug.value ? productsByCat(slug.value) : state.products))
 </script>
 
 <template>
@@ -29,12 +29,12 @@ const list = computed(() => (slug.value ? productsByCat(slug.value) : products))
         </section>
 
         <div class="hero-wrap">
-          <img class="hero-img" :src="heroCollage" alt="ผลิตภัณฑ์ OTOP บ้านผารังหมี" />
+          <img class="hero-img" :src="state.heroCollage" alt="ผลิตภัณฑ์ OTOP บ้านผารังหมี" />
         </div>
 
         <nav class="cat-cards">
           <router-link
-            v-for="c in categories"
+            v-for="c in state.categories"
             :key="c.slug"
             :to="`/products/category/${c.slug}`"
             class="cat-card"

@@ -6,6 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "server": "node server/index.js",
+    "dev:admin": "concurrently -n web,api -c green,yellow \"npm:dev\" \"npm:server\"",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -15,6 +17,9 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",
+    "concurrently": "^10.0.5",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
     "vite": "^6.0.7"
   }
 }
