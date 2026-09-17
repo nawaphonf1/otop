@@ -43,6 +43,12 @@ function nextId(products) {
   return `p${String(max + 1).padStart(2, '0')}`
 }
 
+// ให้หน้า /admin/products เช็ครหัสก่อนปลดล็อกเนื้อหา
+app.get('/api/admin-check', (req, res) => {
+  if (!checkAdminKey(req, res)) return
+  res.json({ ok: true })
+})
+
 // ── สินค้า ──
 app.get('/api/products', (req, res) => {
   res.json(readData())

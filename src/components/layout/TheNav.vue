@@ -13,6 +13,7 @@ const links = [
   { label: 'ผลิตภัณฑ์ OTOP', to: '/products' },
   { label: 'ผู้ผลิต',        to: '/producers' },
   { label: 'ติดต่อเรา',      to: { path: '/', hash: '#contact' } },
+  { label: 'ผู้ดูแลระบบ',    to: '/admin/products' },
 ]
 
 function closeMenu() {

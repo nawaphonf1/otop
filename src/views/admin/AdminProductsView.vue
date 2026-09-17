@@ -2,19 +2,17 @@
 import { reactive, ref, onMounted } from 'vue'
 import { state as store, loadProducts } from '../../data/products'
 
-// ─── รหัสแอดมิน (กันคนอื่นที่เดา URL /admin/products เจอ แล้วมาแก้ข้อมูลได้) ───
-const adminKey = ref(sessionStorage.getItem('adminKey') || '')
-function saveKey() {
-  sessionStorage.setItem('adminKey', adminKey.value)
-}
+// ─── รหัสแอดมิน — เข้าหน้านี้ต้องกรอกรหัสก่อนถึงจะเห็นเนื้อหา (กันคนอื่นที่เดา URL เจอ) ───
+const adminKey = ref('')
+const unlocked = ref(false)
+const checking = ref(false)
+const loginError = ref('')
+
 function authHeaders() {
   return { 'Content-Type': 'application/json', 'x-admin-key': adminKey.value }
 }
 
-const justDeployed = ref(false) // true = เพิ่งบันทึกสำเร็จบน production ต้องรอ redeploy ถึงจะเห็นผลจริงบนเว็บ
-const isLocalDev = location.hostname === 'localhost' || location.hostname === '127.0.0.1'
-
-onMounted(async () => {
+async function loadAdminData() {
   await loadProducts() // เผื่อ state ยังไม่เคยโหลด (เข้า /admin/products ตรง ๆ โดยไม่ผ่านหน้าอื่นก่อน)
   try {
     const res = await fetch('/api/products')
@@ -27,6 +25,39 @@ onMounted(async () => {
   } catch {
     // ใช้ข้อมูล static เดิมไปก่อนถ้า API ยังไม่พร้อม
   }
+}
+
+async function tryUnlock(key) {
+  checking.value = true
+  loginError.value = ''
+  try {
+    const res = await fetch('/api/admin-check', { headers: { 'x-admin-key': key } })
+    if (!res.ok) {
+      const json = await res.json().catch(() => ({}))
+      throw new Error(json.error || 'รหัสไม่ถูกต้อง')
+    }
+    adminKey.value = key
+    sessionStorage.setItem('adminKey', key)
+    unlocked.value = true
+    await loadAdminData()
+  } catch (err) {
+    sessionStorage.removeItem('adminKey')
+    loginError.value = err.message
+  } finally {
+    checking.value = false
+  }
+}
+
+function submitLogin() {
+  tryUnlock(adminKey.value)
+}
+
+const justDeployed = ref(false) // true = เพิ่งบันทึกสำเร็จบน production ต้องรอ redeploy ถึงจะเห็นผลจริงบนเว็บ
+const isLocalDev = location.hostname === 'localhost' || location.hostname === '127.0.0.1'
+
+onMounted(() => {
+  const saved = sessionStorage.getItem('adminKey')
+  if (saved) tryUnlock(saved) // เคยล็อกอินไว้แล้วในแท็บนี้ ลองใช้รหัสเดิมโดยไม่ต้องพิมพ์ซ้ำ
 })
 
 const emptyForm = () => ({
@@ -163,16 +194,23 @@ async function removeProduct(p) {
 </script>
 
 <template>
-  <div class="admin">
+  <!-- ═══ หน้าล็อกอิน — เข้ามาต้องกรอกรหัสก่อนถึงจะเห็นเนื้อหา ═══ -->
+  <div v-if="!unlocked" class="login-gate">
+    <form class="login-box" @submit.prevent="submitLogin">
+      <h1>เข้าสู่ระบบผู้ดูแล</h1>
+      <input v-model="adminKey" type="password" placeholder="รหัสแอดมิน" autofocus />
+      <button type="submit" class="btn primary" :disabled="checking">
+        {{ checking ? 'กำลังตรวจสอบ...' : 'เข้าสู่ระบบ' }}
+      </button>
+      <p v-if="loginError" class="login-error">{{ loginError }}</p>
+    </form>
+  </div>
+
+  <div v-else class="admin">
     <header class="admin-bar">
       <h1>จัดการสินค้า</h1>
       <button class="btn primary" @click="startAdd">+ เพิ่มสินค้าใหม่</button>
     </header>
-
-    <label class="key-row">
-      รหัสแอดมิน
-      <input v-model="adminKey" type="password" placeholder="ใส่รหัสแอดมิน" @change="saveKey" />
-    </label>
 
     <p class="hint" v-if="isLocalDev">
       โหมดเครื่อง: ต้องรัน API server คู่กันด้วย (<code>npm run server</code> หรือรันทั้งคู่พร้อมกันด้วย
@@ -278,6 +316,44 @@ async function removeProduct(p) {
 </template>
 
 <style scoped>
+.login-gate {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: #f4fbef;
+  font-family: var(--font);
+}
+.login-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 300px;
+  background: #fff;
+  padding: 28px 24px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+.login-box h1 {
+  margin: 0 0 6px;
+  font-size: 17px;
+  text-align: center;
+  color: #308b30;
+}
+.login-box input {
+  font: inherit;
+  padding: 9px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+.login-error {
+  margin: 0;
+  font-size: 12px;
+  color: #d94b4b;
+  text-align: center;
+}
+
 .admin {
   max-width: 960px;
   margin: 0 auto;
@@ -293,23 +369,6 @@ async function removeProduct(p) {
   margin-bottom: 8px;
 }
 .admin-bar h1 { font-size: 20px; margin: 0; }
-.key-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #555;
-  margin-bottom: 10px;
-}
-.key-row input {
-  font: inherit;
-  font-weight: 400;
-  padding: 5px 9px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  max-width: 200px;
-}
 .hint {
   font-size: 12px;
   color: #888;
