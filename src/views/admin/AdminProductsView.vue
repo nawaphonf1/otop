@@ -453,6 +453,7 @@ async function removeProduct(p) {
   resize: vertical;
 }
 fieldset {
+  min-width: 0; /* browser ให้ fieldset มี min-width: min-content โดย default ทำให้ไม่ยอมย่อตามเนื้อหายาว ๆ ใน spec-row ล้นออกนอก .panel */
   border: 1px solid #eee;
   border-radius: 8px;
   padding: 10px;
@@ -462,7 +463,7 @@ fieldset {
 }
 legend { font-size: 12px; font-weight: 600; color: #555; padding: 0 4px; }
 .spec-row { display: flex; gap: 6px; }
-.spec-row input { flex: 1; }
+.spec-row input { flex: 1; min-width: 0; }
 
 .preview { width: 100px; height: 100px; object-fit: cover; border-radius: 8px; background: #f2f2f2; }
 .gallery-preview { display: flex; flex-wrap: wrap; gap: 8px; }
